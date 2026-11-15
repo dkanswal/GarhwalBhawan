@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.AdminTbl>
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    @*<div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table>
+                <tr>
+                    <td>
+                        Old Password :
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        New Password :
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Confirm New Password :
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        }
+    </div>*@
+
+    <div class="col-lg-12 col-md-12">
+
+        <table class="table table-bordered table-hover table-responsive">
+            <tr style="background-color:red">
+                <th>
+                    <label>User Name</label>
+                </th>
+                <th>
+                    Date Last Modified
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdminUserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+
+</div>

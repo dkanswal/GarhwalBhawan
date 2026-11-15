@@ -1,0 +1,276 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.FruitVegTbl>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.captn').css('height', '80%');
+    });
+</script>
+
+<!-- events -->
+<div class="events-sec">
+    <div class="container">
+        <h3 class="tittle fadeInRight">फल व सब्जियाँ</h3>
+
+        <div class="experts">
+            <div class="container">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+                        <div class="btm-right text-center">
+                            <img src="~/images/FruitVeg/@item.Image" class="img-responsive img-thumbnail" style="width:auto; height:300px" />
+                            <h4 style="color:orangered; margin:5px">@item.Name</h4>
+                        </div>
+                    </div>
+                }
+                
+
+                @*<div class="col-md-4 bottom-grid wow fadeInDown animated" data-wow-delay=".5s">
+                    <div class="btm-right text-center">
+                        <img src="~/images/FruitVeg/6a6b2db1.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+                        <div class="captn">
+                            <h4 style="font-size:25px; padding:2px"><b>Name</b></h4>
+                        </div>
+                    </div>
+                </div>*@
+             
+
+                @*<div class="col-md-4 bottom-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/alubukhara.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>alubukhara </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/black tomatos.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>black tomatos </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 bottom-grid wow fadeInDown animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/Ghingaru.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Ghingaru </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/hinser.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>hinser </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/jackfruit-tree_thumb.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>jackfruit-tree_thumb </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/Kafal-fruit.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Kafal-fruit </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 bottom-grid wow fadeInDown animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/kafal.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>kafal </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/Kakari.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Kakari </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/Khatai.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Khatai </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/kingore.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>kingore </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 bottom-grid wow fadeInDown animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/Lichi.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Lichi </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/ram-karela.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>ram-karela </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/rpkgonl010130520141Z40Z46 AM.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>Name </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/santra.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>santra </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 bottom-grid wow fadeInDown animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/timla.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>timla </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <div class="btm-right text-center">
+            <img src="~/images/FruitVeg/uttarkashi harshil ke seb.jpg" class="img-responsive img-thumbnail" style="width:auto; height:350px" />
+            <div class="captn">
+                <h4>uttarkashi harshil ke seb </h4>
+                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                        Description
+                    </div>
+                <div>
+                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- //events -->

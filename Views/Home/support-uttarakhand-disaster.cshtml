@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.DisasterTbl>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('table p').each(function () {
+            $(this).css('color', 'black');
+            $(this).css('font-size', '20px');
+        });
+        $('h4').css("font-size", "25px");
+    });
+
+    $(document).ready(function () {
+        $('.grid_3:even').addClass('fadeInRight');
+        $('.grid_3:odd').addClass('fadeInLeft');
+    });
+</script>
+
+<div class="typrography" style="margin-bottom:-100px">
+    <div class="container">
+        <h3 class="tittle">प्राकृतिक आपदा सहयोग</h3>
+    </div>
+</div>
+
+@foreach(var item in Model)
+{ 
+<div class="grid_3 grid_5 wow animated" data-wow-delay=".5s" style="margin-top:20px">
+    <div class="container">
+        <h4 style="text-align:center; color:green">
+            @Html.DisplayFor(modelitem => @item.Heading)
+        </h4>
+        <div class="bs-example">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="type-info">
+                            <p>
+                                @Html.Raw(item.Body)
+                            </p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+}

@@ -1,0 +1,43 @@
+﻿@model System.DateTime?
+@Html.TextBox("", (Model.HasValue ? Model.Value.ToLongDateString() : string.Empty), new { @class = "pickDate" })
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('.pickDate').datepicker({
+            dateFormat: 'dd-MM-yy',
+            changeMonth: false,
+            changeYear: false
+        });
+
+        //Checking End Date is Greater than Start Date Starts
+        jQuery.validator.addMethod("greaterThan",
+function (value, element, params) {
+
+    if (!/Invalid|NaN/.test(new Date(value))) {
+        return new Date(value) > new Date($(params).val());
+    }
+
+    return isNaN(value) && isNaN($(params).val())
+        || (Number(value) > Number($(params).val()));
+}, 'Must be greater than {0}.');
+
+        $("#EndDate").rules('add', { greaterThan: "#StartDate" });
+        //Checking End Date is Greater than Start Date Ends
+
+
+        //Checking Start Date and End Date is Greater than Current Date Starts
+        //var now = new Date();
+        //if($('#StartDate').val()<now)
+        //{
+        //    alert('Start Date should be Greater than current date');
+        //}
+
+        //else if ($('#EndDate').val() < now) {
+        //    alert('End Date should be Greater than current date');
+        //}
+        //Checking Start Date and End Date is Greater than Current Date Ends
+    });
+</script>

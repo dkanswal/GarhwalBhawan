@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <Options>
+      <DesignerInfoPropertySet />
+    </Options>
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce26a17750a546d680eeeabd6750faca" Name="Diagram1">
+        <EntityTypeShape EntityType="DbContext.BannerTbl" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContext.ImpLinkTbl" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContext.TeamTbl" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContext.EkParichay" Width="1.5" PointX="7.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DbContext.MemberTbl" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.ContactTbl" Width="1.5" PointX="2.375" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.DisasterTbl" Width="1.5" PointX="4" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.SamacharTbl" Width="1.5" PointX="5.625" PointY="0.5" />
+        <EntityTypeShape EntityType="DbContext.ImageTbl" Width="1.5" PointX="5.625" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.AdTbl" Width="1.5" PointX="7.25" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.AdminTbl" Width="1.5" PointX="8.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DbContext.VideoTbl" Width="1.5" PointX="8.875" PointY="3" />
+        <EntityTypeShape EntityType="DbContext.AdDescTbl" Width="1.5" PointX="2.375" PointY="5.25" />
+        <EntityTypeShape EntityType="DbContext.AdImgTbl" Width="1.5" PointX="4" PointY="4.75" />
+        <EntityTypeShape EntityType="DbContext.ItihasTbl" Width="1.5" PointX="5.625" PointY="5.5" />
+        <EntityTypeShape EntityType="DbContext.FruitVegTbl" IsExpanded="true" PointY="5.5" PointX="8.875" Width="1.5" Height="2" />
+        <EntityTypeShape EntityType="DbContext.UserProfile" Width="1.5" PointX="0.625" PointY="5.25" />
+        <EntityTypeShape EntityType="DbContext.NomMember" Width="1.5" PointX="0.625" PointY="7.25" />
+        <EntityTypeShape EntityType="DbContext.DocTbl" Width="1.5" PointX="2.375" PointY="7.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,156 @@
+﻿@model GarhwalBhawan.Models.ContactTbl
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@*<script>
+    $(document).ready(function () {
+        $('#FormSendMsg').validate({ // initialize the plugin
+            rules: {
+                Name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 500
+                },
+                EMail: {
+                    required: true,
+                    maxlength: 800
+                },
+                Phone: {
+                    required: true,
+                    minlength: 8
+                },
+                Message: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 4000
+                }
+            },
+            messages: {
+                Name: {
+                    required: "Name is required!",
+                    minlength: "Name should be at least 2 characters long!",
+                    maxlength: "Name cannot exceed 500 characters"
+                },
+                EMail: {
+                    required: "EMail is required!",
+                    maxlength: "EMail cannot exceed 800 characters"
+                },
+                Phone: {
+                    required: "Phone is required!",
+                    minlength: "Phone should be at least 8 characters long!"
+                },
+                Message: {
+                    required: "Message is required!",
+                    minlength: "Message should be at least 2 characters long!",
+                    maxlength: "Message cannot exceed 400 characters"
+                }
+            },
+            
+        })
+    });
+
+
+</script>*@
+
+<!-- map -->
+<div class="view-map">
+    <h3 class="tittle">View on map</h3>
+    <div class="map wow fadeInUp animated" data-wow-delay=".5s">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3501.5587022622244!2d77.2037564!3d28.642985399999997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5d08e2b94d%3A0xdb9a20673dbc33fb!2sVeer+Chand+Singh+Garhwali+Chowk%2C+Type+4%2C+Block+B%2C+Aram+Bagh%2C+Jhandewalan%2C+New+Delhi%2C+Delhi+110055!5e0!3m2!1sen!2sin!4v1421978135700" frameborder="0"></iframe>
+    </div>
+</div>
+<div class="map-grids">
+    <div class="container">
+        <div class="col-md-3 map-left wow fadeInRight animated" data-wow-delay=".5s">
+            <h3>संपर्क करें </h3>
+            <p>
+                गढ़वाल हितैषिणी सभा (रजिस्टर्ड)
+                वीर चन्द्र सिंह गढ़वाली चौक, पचकुयियाँ रोड,
+                नई दिल्ली 110001
+            </p>
+            <br /><br />
+            <p id="demo">
+            </p>
+        </div>
+        <div class="col-md-6 map-middle wow fadeInUp animated" data-wow-delay=".5s">
+            <h3>Feedback</h3>
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "FormSendMsg" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = "Name", maxlength = "500" })
+                @Html.ValidationMessageFor(model => model.Name)
+
+                @Html.TextBoxFor(model => model.Phone, new { @placeholder = "10 Digit Phone Number", maxlength = "10" })
+                @Html.ValidationMessageFor(model => model.Phone)
+                
+                @Html.TextBoxFor(model => model.EMail, new { @placeholder="EMail", maxlength = "800" })
+                @Html.ValidationMessageFor(model => model.EMail)
+
+                @Html.TextAreaFor(model => model.Message, new { @placeholder="Message", @class = "form-control",  maxlength = "4000", @column = "30" })
+                @Html.ValidationMessageFor(model => model.Message)
+
+                    <div style="color: red; font-size: larger;">
+                            @ViewBag.Message
+                    </div>
+
+
+                <input type="submit" value="Send Message" />
+
+            }
+          
+        </div>
+        <div class="col-md-3 map-left wow fadeInLeft animated" data-wow-delay=".5s">
+            <div class="call">
+                <div class="col-xs-3 contact-grdl">
+                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                </div>
+                <div class="col-xs-9 contact-grdr">
+                    <ul>
+                        <li>+91-8588873555</li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="call">
+                <div class="col-xs-3 contact-grdl">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                </div>
+                <div class="col-xs-9 contact-grdr">
+                    <ul>
+                        <li>वीर चन्द्र सिंह गढ़वाली चौक, पचकुयियाँ रोड,</li>
+                        <li>नई दिल्ली 110001</li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="call">
+                <div class="col-xs-3 contact-grdl">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                </div>
+                <div class="col-xs-9 contact-grdr">
+                    <ul>
+                        <li><a href="mailto:garhwalhiteshinisabha@gmail.com">garhwalhiteshinisabha@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //map -->
+<!-- contact -->
+
+<script>
+    var myVar = setInterval(function () { myTimer() }, 1000);
+
+    function myTimer() {
+        var d = new Date();
+        var t = d.toLocaleTimeString();
+        document.getElementById("demo").innerHTML = d;
+    }
+</script>

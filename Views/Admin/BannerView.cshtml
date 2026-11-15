@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.BannerTbl>
+
+@{
+    ViewBag.Title = "BannerView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <h2>Banner List</h2>
+
+    <p style="margin-top:20px">
+        @Html.ActionLink("Create New", "BannerCreate", "Admin", new { @class = "btn btn-info", @style = "text-decoration:none" })
+    </p>
+
+    <table class="table table-responsive table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Heading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alt)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            using (Html.BeginForm("BannerDelete", "Admin", new { id = item.ID }))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Heading)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <img src="~/Image/@item.Image" alt="@item.Alt" style="height:100px; width:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Alt)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "BannerEdit", new { id = item.ID }) |
+                        <button class="glyphicon" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete @item.ID ') ">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

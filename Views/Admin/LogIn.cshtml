@@ -1,0 +1,44 @@
+﻿@model GarhwalBhawan.Models.AdminTbl
+
+@{
+    ViewBag.Title = "LogIn for Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Login Failed, Invalid Details");
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Login Form</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="editor-label">@Html.LabelFor(u => u.AdminUserName)</div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(u => u.AdminUserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.AdminUserName)
+                        </div>
+
+                        <div class="editor-label">@Html.LabelFor(u => u.AdminPassword)</div>
+
+                        <div class="editor-field">
+                            @Html.PasswordFor(u => u.AdminPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.AdminPassword)
+                        </div>
+
+                        <input type="submit" value="Log In" class="btn btn-success" style="background-color:green" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</div>

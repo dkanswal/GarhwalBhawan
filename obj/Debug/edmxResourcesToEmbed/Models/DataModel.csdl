@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BannerTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Alt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImpLinkTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TeamTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Alt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Rank" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BannerTbls" EntityType="Self.BannerTbl" />
+    <EntitySet Name="ImpLinkTbls" EntityType="Self.ImpLinkTbl" />
+    <EntitySet Name="TeamTbls" EntityType="Self.TeamTbl" />
+    <EntitySet Name="EkParichays" EntityType="DbContext.EkParichay" />
+    <EntitySet Name="MemberTbls" EntityType="DbContext.MemberTbl" />
+    <EntitySet Name="ContactTbls" EntityType="DbContext.ContactTbl" />
+    <EntitySet Name="DisasterTbls" EntityType="DbContext.DisasterTbl" />
+    <FunctionImport Name="InsertMsg">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="EMail" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="Decimal" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertMessage" ReturnType="Collection(Int32)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="EMail" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="Decimal" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="SamacharTbls" EntityType="DbContext.SamacharTbl" />
+    <EntitySet Name="ImageTbls" EntityType="DbContext.ImageTbl" />
+    <EntitySet Name="AdTbls" EntityType="DbContext.AdTbl" />
+    <EntitySet Name="AdminTbls" EntityType="DbContext.AdminTbl" />
+    <EntitySet Name="UserProfiles" EntityType="DbContext.UserProfile" />
+    <EntitySet Name="VideoTbls" EntityType="DbContext.VideoTbl" />
+    <EntitySet Name="AdDescTbls" EntityType="DbContext.AdDescTbl" />
+    <EntitySet Name="AdImgTbls" EntityType="DbContext.AdImgTbl" />
+    <EntitySet Name="ItihasTbls" EntityType="DbContext.ItihasTbl" />
+    <EntitySet Name="FruitVegTbls" EntityType="DbContext.FruitVegTbl" />
+  </EntityContainer>
+  <EntityType Name="EkParichay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MemberTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Post" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rank" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ContactTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EMail" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" DefaultValue="getdate()" />
+    <Property Name="Date" Type="DateTime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DisasterTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SamacharTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Alt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ImageTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Alt" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="ImgGroup" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" DefaultValue="A" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AdminTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AdminUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateModified" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VideoTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Video" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Alt" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="true" />
+    <Property Name="VideoGroup" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdDescTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AdTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AdID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdImgTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdID" Type="Int32" Nullable="false" />
+    <Property Name="AdImg" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ItihasTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heading" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FruitVegTbl">
+    <Documentation />
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="true" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="true" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Alt" Type="String" Nullable="true" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

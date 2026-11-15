@@ -1,0 +1,58 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.ItihasTbl>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('table p').each(function () {
+            $(this).css('font-size', '20px');
+            $(this).css('color', 'black');
+        });
+        $('h5').css('font-size', '25px');
+    });
+
+    $(document).ready(function () {
+        $('.grid_3:even').addClass('fadeInRight');
+        $('.grid_3:odd').addClass('fadeInLeft');
+    });
+</script>
+
+<!-- who we are -->
+<div class="who-are">
+    <div class="container">
+        <h3 class="tittle">भवन का इतिहास</h3>
+
+        <div class="col-md-12 abt-right wow fadeInLeft animated" data-wow-delay=".5s">
+            <h4 class="h3.-bootstrap-heading text-center">
+                <img src="~/images/Garhwal Bhawan1.JPG" alt="Garhwal Bhawan" class="img img-responsive" style="height:350px; width:100%" />
+            </h4>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //who we are -->
+
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div id="divcount" class="grid_3 grid_5 wow animated" data-wow-delay=".5s">
+            <h5 class="panel-heading" style="text-align:center; color:green; font-size:20px">
+                @Html.DisplayFor(modelitem => @item.Heading)
+            </h5>
+            <div class="bs-example panel-body type-info" >
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="type-info">
+                                <p style="text-align:justify">                                    
+                                    @Html.Raw(item.Body)
+                                </p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+}

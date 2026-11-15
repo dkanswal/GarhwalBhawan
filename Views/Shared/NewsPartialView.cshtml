@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.SamacharTbl>
+
+
+<div id="OpenDilog"></div>
+<div class="row">
+    @foreach (var item in Model.Take(3))
+    {
+        <div class="col-sm-4 col-md-4">
+            <div class="thumbnail" style="color: white; background-color: lightblue; border-radius:10px">
+                <div class="caption">
+                    <h2>@Html.DisplayFor(modelItem => item.Heading, new { @class = "Heading" })</h2>
+                    <p>
+                        @string.Format("{0:dd-MMM-yyyy}", Convert.ToDateTime(Html.DisplayFor(model => item.Date).ToString()))
+                        <br />
+                        <div class="NewsDesc" style="text-align:justify; height:40px; display:block; overflow:hidden;">
+                            @Html.Raw(item.Description)
+                        </div>
+                        @*@Html.DisplayFor(modelItem => item.Description)*@
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-primary" role="button" onclick="SeeMreNews(@item.ID)">
+                            आगे पढ़े
+                        </a>
+                        </p>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<script type="text/javascript">
+    function SeeMreNews(I_ID) {
+        var ph = $("#OpenDilog");
+        ph.load("/Home/NewsPartial?id=" + I_ID, function () {
+            ph.dialog({
+                modal: true,
+                width: 500,
+                height: 500,
+                title: "समाचार",
+                resizable: false
+            });
+        });
+    }
+</script>
+

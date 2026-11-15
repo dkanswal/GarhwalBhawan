@@ -1,0 +1,88 @@
+﻿@*@model GarhwalBhawan.Models.VideoGrp*@
+
+<!-- Gallery -->
+<div class="gallery">
+    <div class="container">
+        <h3 class="tittle">Video गैलरी</h3>
+
+        <div class="row container text-center" style="font-size:20px; color:yellowgreen;">
+            Choose your Option
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="container">
+
+            @section Scripts {
+
+                <script type="text/jscript">
+                    $(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Home/getVideo",
+                            datatype: "Json",
+                            success: function (data) {
+                                $.each(data, function (index, value) {
+                                    $('#dropdownVideoGrp').append('<option value="' + value.VideoGroup + '">' + value.VideoGroup + ' ' + '</option>');
+                                });
+                            }
+                        });
+
+                        $('#dropdownVideoGrp').change(function () {
+                            $('#dropdownVideoYr').empty();
+                            $.ajax({
+                                type: "POST",
+                                url: "/Home/getVideoYear",
+                                datatype: "Json",
+                                data: { grp: $('#dropdownVideoGrp').val() },
+                                success: function (data) {
+                                    $('#dropdownVideoYr').append('<option value="">Select Year' + '</option>');
+                                    $.each(data, function (index, value) {
+                                        $('#dropdownVideoYr').append('<option value="' + value.Year + '">' + value.Year + ' ' + '</option>');
+                                    });
+                                }
+                            });
+                        });
+
+                        $('#dropdownVideoYr').change(function () {
+                            $("#Status").text("Loading Please Wait...");
+                            $('#tbl').empty();
+                            $.ajax({
+                                type: "POST",
+                                url: "/Home/getVideoClick",
+                                datatype: "Json",
+                                data: { grp: $('#dropdownVideoGrp').val(), grpYr: $('#dropdownVideoYr').val() },
+                                success: function (data) {
+                                    $.each(data, function (index, value) {
+                                        $('#tbl').append("<tr class='col-lg-4 col-md-4 col-sm-12'>" + "<td>" + "<iframe width='560' height='315' src=" + value.Video + " " + 'alt="' + value.Alt + '"' + 'style="width:200px; height:200px"' + 'class="img-thumbnail"' + " frameborder='0' allowfullscreen></iframe>" + "<br />" + value.Description + "</td>" + "</tr>");
+                                    });
+                                    $("#Status").text("");
+                                }
+                            });
+                        });
+                    });
+                </script>
+            }
+
+            <div>
+                <div class="text-center">
+                    @Html.DropDownList("dropdownVideoGrp", new SelectList(string.Empty, "Value", "Text"), "Select Group", new { @class = "btn btn-default dropdown-toggle", @style = "background-color:#00ff90; " })
+                </div>
+
+                <div class="text-center" style="margin-top:10px">
+                    @Html.DropDownList("dropdownVideoYr", new SelectList(string.Empty, "Value", "Text"), "Select Year", new { @class = "btn btn-default dropdown-toggle", @style = "background-color:#00ff90; " })
+                </div>
+
+                <span id="Status" class="label label-danger" style="font-size:20px"></span>
+
+                <div>
+                    <table id="tbl" class="table table-responsive table-hover table-bordered text-center" style="font-size:20px"></table>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //Gallery -->
+<!-- contact -->

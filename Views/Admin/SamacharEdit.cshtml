@@ -1,0 +1,66 @@
+﻿@model GarhwalBhawan.Models.SamacharTbl
+
+@{
+    ViewBag.Title = "SamacharEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="container">
+    <h2>SamacharEdit</h2>
+
+    @using (Html.BeginForm("SamacharEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>SamacharTbl</legend>
+
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Heading)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Heading)
+                @Html.ValidationMessageFor(model => model.Heading)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Image)
+            </div>
+            <div class="editor-field">
+                <input id="FileUpload" title="Upload an image" type="file" name="file" class="btn btn-info" />
+                <img src="~/Image/@Model.Image" alt="@Model.Alt" style="height:100px; width:100px" />
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Alt)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Alt)
+                @Html.ValidationMessageFor(model => model.Alt)
+            </div>
+
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>

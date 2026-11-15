@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbContextStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="BannerTbls">
+      <EntityTypeMapping TypeName="DbContext.BannerTbl">
+        <MappingFragment StoreEntitySet="BannerTbl">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpLinkTbls">
+      <EntityTypeMapping TypeName="DbContext.ImpLinkTbl">
+        <MappingFragment StoreEntitySet="ImpLinkTbl">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeamTbls">
+      <EntityTypeMapping TypeName="DbContext.TeamTbl">
+        <MappingFragment StoreEntitySet="TeamTbl">
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EkParichays">
+      <EntityTypeMapping TypeName="DbContext.EkParichay">
+        <MappingFragment StoreEntitySet="EkParichay">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberTbls">
+      <EntityTypeMapping TypeName="DbContext.MemberTbl">
+        <MappingFragment StoreEntitySet="MemberTbl">
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactTbls">
+      <EntityTypeMapping TypeName="DbContext.ContactTbl">
+        <MappingFragment StoreEntitySet="ContactTbl">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisasterTbls">
+      <EntityTypeMapping TypeName="DbContext.DisasterTbl">
+        <MappingFragment StoreEntitySet="DisasterTbl">
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SamacharTbls">
+      <EntityTypeMapping TypeName="DbContext.SamacharTbl">
+        <MappingFragment StoreEntitySet="SamacharTbl">
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageTbls">
+      <EntityTypeMapping TypeName="DbContext.ImageTbl">
+        <MappingFragment StoreEntitySet="ImageTbl">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="ImgGroup" ColumnName="ImgGroup" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdTbls">
+      <EntityTypeMapping TypeName="DbContext.AdTbl">
+        <MappingFragment StoreEntitySet="AdTbl">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminTbls">
+      <EntityTypeMapping TypeName="DbContext.AdminTbl">
+        <MappingFragment StoreEntitySet="AdminTbl">
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+          <ScalarProperty Name="AdminUserName" ColumnName="AdminUserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="DbContext.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoTbls">
+      <EntityTypeMapping TypeName="DbContext.VideoTbl">
+        <MappingFragment StoreEntitySet="VideoTbl">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="VideoGroup" ColumnName="VideoGroup" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdDescTbls">
+      <EntityTypeMapping TypeName="DbContext.AdDescTbl">
+        <MappingFragment StoreEntitySet="AdDescTbl">
+          <ScalarProperty Name="AdID" ColumnName="AdID" />
+          <ScalarProperty Name="AdTitle" ColumnName="AdTitle" />
+          <ScalarProperty Name="AdDesc" ColumnName="AdDesc" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdImgTbls">
+      <EntityTypeMapping TypeName="DbContext.AdImgTbl">
+        <MappingFragment StoreEntitySet="AdImgTbl">
+          <ScalarProperty Name="AdImg" ColumnName="AdImg" />
+          <ScalarProperty Name="AdID" ColumnName="AdID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItihasTbls">
+      <EntityTypeMapping TypeName="DbContext.ItihasTbl">
+        <MappingFragment StoreEntitySet="ItihasTbl">
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FruitVegTbls">
+      <EntityTypeMapping TypeName="DbContext.FruitVegTbl">
+        <MappingFragment StoreEntitySet="FruitVegTbl">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Alt" ColumnName="Alt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

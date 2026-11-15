@@ -1,0 +1,123 @@
+﻿@model GarhwalBhawan.Models.ImageTbl
+
+@{
+    ViewBag.Title = "MultiImageUpload";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <h2>Upload Multiple Images</h2>
+
+    @*<input type='file' multiple id='multifileUpload' name="files[]" data-url="@Url.Action("MultiImageUpload", "Admin")" />
+        <p>
+            <input id="ImageSave" type="button" value="Create" />
+        </p>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#ImageSave').click({
+                    dataType: 'json',
+                    done: function (e, data) {
+                        $.each(data.result.files, function (index, files) {
+                            $('<p/>').text(file.name).appendTo(document.body);
+                        });
+                    },
+                    success: function (response) {
+                        if (response != null && response.success) {
+                            alert(response.responseText);
+                        } else {
+                            alert(response.responseText);
+                        }
+                    },
+                    error: function (response) {
+                        alert("error!");  //
+                    }
+                });
+            });
+        </script>
+
+    *@
+
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+
+        <table class="table table-responsive">
+            <tr>
+                <td>
+                    <label for="file1">Filename:</label>
+                    <input type="file" name="files" id="file1" />
+                </td>
+                <td>
+                    <label for="file2">Filename:</label>
+                    <input type="file" name="files" id="file2" />
+                </td>
+                <td>
+                    <label for="file3">Filename:</label>
+                    <input type="file" name="files" id="file3" />
+                </td>
+                <td>
+                    <label for="file4">Filename:</label>
+                    <input type="file" name="files" id="file4" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="file5">Filename:</label>
+                    <input type="file" name="files" id="file5" />
+                </td>
+                <td>
+                    <label for="file6">Filename:</label>
+                    <input type="file" name="files" id="file6" />
+                </td>
+                <td>
+                    <label for="file7">Filename:</label>
+                    <input type="file" name="files" id="file7" />
+                </td>
+                <td>
+                    <label for="file8">Filename:</label>
+                    <input type="file" name="files" id="file8" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="file9">Filename:</label>
+                    <input type="file" name="files" id="file9" />
+                </td>
+                <td>
+                    <label for="file10">Filename:</label>
+                    <input type="file" name="files" id="file10" />
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        Image Group
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ImgGroup)
+                        @Html.ValidationMessageFor(model => model.ImgGroup)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-label">
+                        Year
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Year)
+                        @Html.ValidationMessageFor(model => model.Year)
+                    </div>
+                </td>
+            </tr>
+        </table>
+       
+
+        <input type="submit" class="btn btn-danger" value="Submit" style="background-color:red" />
+    </form>
+
+</div>

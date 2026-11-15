@@ -1,0 +1,111 @@
+﻿@model GarhwalBhawan.ViewModel.MemberTblVM
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('h4').css('font-size', '15px');
+    });
+</script>
+
+<!-- events -->
+<div class="events-sec">
+    <div class="container">
+        <h3 class="tittle fadeInRight">वर्त्तमान कार्यकारिणी </h3>
+        <div class="event-grids">
+            @*<div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 event-grid wow fadeInRight animated" data-wow-delay=".5s">
+                    <img src="~/images/garhwalMem.jpg" alt="वर्त्तमान कार्यकारिणी" class="img-responsive" />
+                </div>
+            </div>*@
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 event-grid wow fadeInLeft animated text-center" style="margin-top:30px" data-wow-delay=".5s">
+                    <div class="event-info pager">
+                        <h4>
+                            ELECTED CURRENT MEMBERS OF EXCUTIVE COMMITTEE OF GARHWAL HITESHINI SABHA
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="bs-docs-example">
+                <table class="fadeInLeft table table-hover table-responsive table-bordered" data-wow-delay=".5s" style="font-size:25px">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Post
+                        </th>
+                        <th>
+                            Photo
+                        </th>
+                    </tr>
+
+                    @foreach (var item in @Model.MemObj)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Post)
+                            </td>
+                            <td>
+                                <img src="~/Image/Cabinet/@item.Image" alt="@item.Name" style="height:100px; width:100px" />
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 event-grid wow fadeInLeft animated text-center" style="margin-top:30px" data-wow-delay=".5s">
+                    <div class="event-info pager">
+                        <h4>
+                            NOMINATED CURRENT MEMBERS OF EXCUTIVE COMMITTEE OF GARHWAL HITESHINI SABHA
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="bs-docs-example">
+                <table class="fadeInLeft table table-hover table-responsive table-bordered" data-wow-delay=".5s" style="font-size:25px">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Post
+                        </th>
+                        <th>
+                            Photo
+                        </th>
+                    </tr>
+
+                    @foreach (var item in @Model.NomMemObj)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Post)
+                            </td>
+                            <td>
+                                <img src="~/Image/Cabinet/NominatedMem/@item.Image" alt="@item.Name" style="height:100px; width:100px" />
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- //events -->

@@ -1,0 +1,102 @@
+﻿@model List<GarhwalBhawan.Models.MemberTbl>
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+@{
+    ViewBag.Title = "Member List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <style type="text/css">
+        .grid {
+            width: 100%;
+        }
+    </style>
+}
+
+<div class="container">
+    <div style="padding:7px 0;">
+        <input id="AddMember" type="button" value="Add New Member" />
+    </div>
+
+    <div id='OpenDilog'></div>
+
+    <h2>Member Information List</h2>
+
+    <div class="container">
+        @{
+            WebGrid grid = new WebGrid(Model);
+            @grid.GetHtml(
+                  tableStyle: "table table-hover",
+         fillEmptyRows: false,
+         mode: WebGridPagerModes.All,
+         firstText: "<< First",
+         previousText: "< Prev",
+         nextText: "Next >",
+         lastText: "Last >>",
+         columns: new[] {
+         grid.Column("ID",header: "ID"),
+         grid.Column("Name",header: "Name"),
+         grid.Column("Post",header: "Post"),
+          grid.Column(header: "Image", format: @<text><img src="~/Image/Cabinet/@item.Image" id="@item.ID" style="width:100px; height:100px"></text>),
+         grid.Column("Rank",header: "Rank"),
+         grid.Column("ID", header: "Action", canSort:false,
+
+         format: @<text>
+            @Html.Raw("<img src='/images/edit.png' title='Edit' onclick='EditMember(" + item.ID + ")' />")
+            @Html.Raw("<img src='/images/delete.png' title='Delete' onclick='DeleteMember(" + item.ID + ")' />")
+        </text>
+        )
+     })
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#AddMember').click(function () {
+            var div = $("#OpenDilog");
+            div.load("/Admin/MemberCreate", function () {
+                div.dialog({
+                    modal: true,
+                    width: 500,
+                    height: 400,
+                    title: "Add New Member",
+                    resizable: false
+                });
+            });
+        });
+    });
+    
+
+    function EditMember(M_ID) {
+        var ph = $("#OpenDilog");
+        ph.load("/Admin/MemberEdit?MemID=" + M_ID, function () {
+            ph.dialog({
+                modal: true,
+                width: 500,
+                height: 500,
+                title: "Edit Member",
+                resizable: false
+            });
+        });
+    }
+
+    function DeleteMember(M_ID) {
+        if (confirm("Are You Sure Delete Selected Member Record No.? " + M_ID)) {
+            var data = { 'MemID': M_ID }
+            $.post('/Admin/MemberDelete', data,
+            function (data) {
+                if (data == true)
+                    window.location.href = 'MemberView';
+                else
+                    alert("Can't Delete. Contact Support Team.");
+            });
+        }
+    }
+</script>
+}

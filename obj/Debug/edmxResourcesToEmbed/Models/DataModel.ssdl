@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdDescTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdDesc" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AdTitle" Type="nvarchar" MaxLength="150" />
+    <Property Name="AdID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdImgTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdID" Type="int" Nullable="false" />
+    <Property Name="AdImg" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="AdminUserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="AdminPassword" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Status" Type="char" MaxLength="1" Nullable="false" DefaultValue="A" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BannerTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Alt" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ContactTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="EMail" Type="varchar" MaxLength="800" Nullable="false" />
+    <Property Name="Phone" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" Nullable="false" DefaultValue="getdate()" />
+    <Property Name="Date" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DisasterTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EkParichay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="3000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Alt" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ImgGroup" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Year" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImpLinkTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItihasTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Post" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rank" Type="int" />
+  </EntityType>
+  <EntityType Name="SamacharTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Heading" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="Alt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TeamTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Alt" Type="nvarchar" MaxLength="100" />
+    <Property Name="Rank" Type="int" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideoTbl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Video" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Alt" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="true" />
+    <Property Name="VideoGroup" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Year" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DbContextStoreContainer">
+    <EntitySet Name="AdDescTbl" EntityType="Self.AdDescTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdImgTbl" EntityType="Self.AdImgTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminTbl" EntityType="Self.AdminTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdTbl" EntityType="Self.AdTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BannerTbl" EntityType="Self.BannerTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactTbl" EntityType="Self.ContactTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DisasterTbl" EntityType="Self.DisasterTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EkParichay" EntityType="Self.EkParichay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageTbl" EntityType="Self.ImageTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImpLinkTbl" EntityType="Self.ImpLinkTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItihasTbl" EntityType="Self.ItihasTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberTbl" EntityType="Self.MemberTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SamacharTbl" EntityType="Self.SamacharTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamTbl" EntityType="Self.TeamTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoTbl" EntityType="Self.VideoTbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FruitVegTbl" Schema="dbo" Table="FruitVegTbl" store:Name="FruitVegTbl" store:Type="Tables" EntityType="DbContext.Store.FruitVegTbl" />
+  </EntityContainer>
+  <EntityType Name="FruitVegTbl">
+    <Documentation />
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Image" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Alt" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+</Schema>

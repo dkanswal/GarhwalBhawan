@@ -1,0 +1,92 @@
+﻿@*@model GarhwalBhawan.Models.ImageGrp*@
+
+<link href="~/Content/darkbox.css" rel="stylesheet" />
+<script src="~/Scripts/darkbox.js"></script>
+
+<!-- Gallery -->
+<div class="gallery">
+    <div class="container">
+        <h3 class="tittle">फोटो गैलरी</h3>
+
+        <div class="row container text-center" style="font-size:20px; color:yellowgreen;">
+            Choose your Option
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="container">
+
+            @section Scripts {
+
+                <script type="text/jscript">
+                    $(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Home/getImage",
+                            datatype: "Json",
+                            success: function (data) {
+                                $.each(data, function (index, value) {
+                                    $('#dropdownImageGrp').append('<option value="' + value.ImgGroup + '">' + value.ImgGroup + ' ' + '</option>');
+                                });
+                            }
+                        });
+
+                        $('#dropdownImageGrp').change(function () {
+                            $('#dropdownImageYr').empty();
+                            $.ajax({
+                                type: "POST",
+                                url: "/Home/getImageYear",
+                                datatype: "Json",
+                                data: { grp: $('#dropdownImageGrp').val() },
+                                success: function (data) {
+                                    $('#dropdownImageYr').append('<option value="">Select Year  ' + '</option>');
+                                    $.each(data, function (index, value) {
+                                        $('#dropdownImageYr').append('<option value="' + value.Year + '">' + value.Year + ' ' + '</option>');
+                                    });
+                                }
+                            });
+                        });
+
+                        $('#dropdownImageYr').change(function () {
+                            $("#Status").text("Loading Please Wait...");
+                            $('#tbl').empty();
+                            $.ajax({
+                                type: "POST",
+                                url: "/Home/getImageClick",
+                                datatype: "Json",
+                                data: { grp: $('#dropdownImageGrp').val(), grpYr: $('#dropdownImageYr').val() },
+                                success: function (data) {
+                                    $.each(data, function (index, value) {
+                                        $('#tbl').append("<tr class='col-lg-4 col-md-4 col-sm-12'>" + "<td>" + "<label>"+value.ID+"</label><a href='/Image/" + value.Image + "'><img src=/Image/" + value.Image + " " + 'alt="' + value.Alt + '"' + 'style="width:200px; height:200px" data-darkbox=/Image/' + value.Image + ' data-darkbox-description="'+value.Description+'"' + 'class="img-thumbnail"' + " /></a>" + "<br />" + value.Description + "</td>" + "</tr>");
+                                    });
+                                    $("#Status").text("");
+                                }
+                            });
+                        });
+                    });
+                </script>
+            }
+
+            <div>
+                @*<a href='~/Image/1.jpg' target='_blank'><img src="~/Image/1.jpg" /> </a>*@
+                <div class="text-center">
+                    @Html.DropDownList("dropdownImageGrp", new SelectList(string.Empty, "Value", "Text"), "Please select a Group", new { @class = "btn btn-default dropdown-toggle", @style = "background-color:#00ff90; " })
+                </div>
+
+                <div class="text-center" style="margin-top:10px">
+                    @Html.DropDownList("dropdownImageYr", new SelectList(string.Empty, "Value", "Text"), "Select Year", new { @class = "btn btn-default dropdown-toggle", @style = "background-color:#00ff90; " })
+                </div>
+
+                <span id="Status" class="label label-danger" style="font-size:20px"></span>
+
+                <div>
+                    <table id="tbl" class="table table-responsive table-hover table-bordered text-center" style="font-size:20px"></table>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //Gallery -->
+<!-- contact -->

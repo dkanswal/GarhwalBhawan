@@ -1,0 +1,63 @@
+﻿@model GarhwalBhawan.Models.SamacharTbl
+
+@{
+    ViewBag.Title = "Add New Samachar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="container">
+    <h2>Add New Samachar</h2>
+
+    @using (Html.BeginForm("SamacharCreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>SamacharTbl</legend>
+
+            <div class="editor-label" style="margin-top:20px">
+                @Html.LabelFor(model => model.Heading)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Heading)
+                @Html.ValidationMessageFor(model => model.Heading)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Image)
+            </div>
+            <div class="editor-field">
+                <input id="Image" title="Upload an image" type="file" name="file" class="btn btn-info" />
+                @Html.ValidationMessageFor(model => model.Image)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Alt)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Alt)
+                @Html.ValidationMessageFor(model => model.Alt)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "SamacharView")
+    </div>
+</div>

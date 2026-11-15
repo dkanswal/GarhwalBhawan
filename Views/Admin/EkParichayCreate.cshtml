@@ -1,0 +1,47 @@
+﻿@model GarhwalBhawan.Models.EkParichay
+
+@{
+    ViewBag.Title = "Add New EkParichay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="container">
+    <h2>Add New EkParichay</h2>
+
+    @using (Html.BeginForm("EkParichayCreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>EkParichayTbl</legend>
+
+            <div class="editor-label" style="margin-top:20px">
+                @Html.LabelFor(model => model.Heading)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Heading)
+                @Html.ValidationMessageFor(model => model.Heading)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "EkParichayView")
+    </div>
+</div>

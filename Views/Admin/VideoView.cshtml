@@ -1,0 +1,104 @@
+﻿@model List<GarhwalBhawan.Models.VideoTbl>
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+@{
+    ViewBag.Title = "Video List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <style type="text/css">
+        .grid {
+            width: 100%;
+        }
+    </style>
+}
+
+<div class="container">
+    <div style="padding:7px 0;">
+        <input id="AddVideo" type="button" value="Add New Video" />
+    </div>
+
+    <div id='OpenDilog'></div>
+
+    <h2>Video Information List</h2>
+
+    <div class="container">
+        @{
+            WebGrid grid = new WebGrid(Model);
+            @grid.GetHtml(
+                   tableStyle: "table table-hover",
+         fillEmptyRows: false,
+         mode: WebGridPagerModes.All,
+         firstText: "<< First",
+         previousText: "< Prev",
+         nextText: "Next >",
+         lastText: "Last >>",
+         columns: new[] {
+         grid.Column("ID",header: "ID"),
+         grid.Column(header: "Video", format: @<text><img src="~/images/@item.Video" id="@item.ID" style="width:100px; height:100px"></text>),
+         grid.Column("Alt",header: "Alt"),
+         grid.Column("VideoGroup",header: "VideoGroup"),
+         grid.Column("Date",header: "Date"),
+         grid.Column("Year",header: "Year"),
+         grid.Column("Description",header: "Description"),
+         grid.Column("ID", header: "Action", canSort:false,
+
+         format: @<text>
+            @Html.Raw("<img src='/images/edit.png' title='Edit' onclick='EditVideo(" + item.ID + ")' />")
+            @Html.Raw("<img src='/images/delete.png' title='Delete' onclick='DeleteVideo(" + item.ID + ")' />")
+        </text>
+        )
+     })
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#AddVideo').click(function () {
+                var div = $("#OpenDilog");
+                div.load("/Admin/VideoCreate", function () {
+                    div.dialog({
+                        modal: true,
+                        width: 500,
+                        height: 500,
+                        title: "Add New Video",
+                        resizable: false
+                    });
+                });
+            });
+        });
+
+
+        function EditVideo(V_ID) {
+            var ph = $("#OpenDilog");
+            ph.load("/Admin/VideoEdit?VidID=" + V_ID, function () {
+                ph.dialog({
+                    modal: true,
+                    width: 500,
+                    height: 400,
+                    title: "Edit Video",
+                    resizable: false
+                });
+            });
+        }
+
+        function DeleteVideo(V_ID) {
+            if (confirm("Are You Sure Delete Selected Video Record No.? " + V_ID)) {
+                var data = { 'VidID': V_ID }
+                $.post('/Admin/VideoDelete', data,
+                function (data) {
+                    if (data == true)
+                        window.location.href = 'VideoView';
+                    else
+                        alert("Can't Delete. Contact Support Team.");
+                });
+            }
+        }
+    </script>
+}

@@ -1,0 +1,131 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.ImageTbl>
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+@{
+    ViewBag.Title = "Search Image List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div style="padding:7px 0;">
+        <input id="AddImage" type="button" value="Add New Image" />
+    </div>
+    
+    <div class="form-group">
+        <input id="TxtSearch" type="text" class="form-inline" style="border:black 1px solid" /><input id="BtnSearch" type="button" value="Search" class="form-inline" />
+        <select id="SelectColmn" class="form-inline">
+            <option value="">Select Search Type</option>
+            <option value="ID">ID</option>
+            <option value="Description">Description</option>
+            <option value="Image">Image</option>
+            <option value="ImgGroup">ImgGroup</option>
+            <option value="Year">Year</option>
+        </select>
+    </div>
+
+    <div class="pull-right">
+        <a href="~/Admin/MultiImageUpload" target="_blank">Upload MultiPle Images</a>
+    </div>
+
+    <div id='OpenDilog'></div>
+
+    <h2>Image Information List</h2>
+
+    <span id="Status" class="label label-danger" style="font-size:20px"></span>
+
+</div>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(window).load(function () {
+                $("#Status").text("Loading Please Wait...");
+                $('#tbl').empty();
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/getSearchImage",
+                    datatype: "Json",
+                    data: { searchTxt: $('#TxtSearch').val(), searchClmn: $('#SelectColmn').val() },
+                    success: function (data) {
+                        $('#tbl').append("<tr><th>ID</th><th>Image</th><th>Alt Desc</th><th>Group</th><th>Date</th><th>Year</th><th>Description</th><th>Action</th></tr>");
+                        $.each(data, function (index, value) {
+                            $('#tbl').append("<tr class='col-lg-12 col-md-12 col-sm-12'>" + "<td><label id='" + value.ID + "'>" + value.ID + "</label></td>" + "<td>" + "<a href='/Image/" + value.Image + "' target='_blank' ><img src=/Image/" + value.Image + " " + 'alt="' + value.Alt + '"' + 'style="width:100px; height:100px" class="img-thumbnail"' + " /></a></td>" + "<td><label>" + value.Alt + "</label></td><td><label>" + value.ImgGroup + "</label></td>" + "<td><label>" + value.Date + "</label></td><td><label>" + value.Year + "</label></td><td>" + "&nbsp;" + value.Description + "</td><td><img src='/images/edit.png' title='Edit' onclick='EditImage(" + value.ID + ")'/> <img src='/images/delete.png' title='Delete' onclick='DeleteImage(" + value.ID + ")' />  </td>" + "</tr>");
+                        });
+                        $("#Status").text("");
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#AddImage').click(function () {
+                var div = $("#OpenDilog");
+                div.load("/Admin/ImageCreate", function () {
+                    div.dialog({
+                        modal: true,
+                        width: 500,
+                        height: 500,
+                        title: "Add New Image",
+                        resizable: false
+                    });
+                });
+            });
+        });
+
+
+        function EditImage(I_ID) {
+            var ph = $("#OpenDilog");
+            ph.load("/Admin/ImageEdit?ImgID=" + I_ID, function () {
+                ph.dialog({
+                    modal: true,
+                    width: 500,
+                    height: 600,
+                    title: "Edit Image",
+                    resizable: false
+                });
+            });
+        }
+
+        function DeleteImage(I_ID) {
+            if (confirm("Are You Sure Delete Selected Image Record No.? " + I_ID)) {
+                var data = { 'ImgID': I_ID }
+                $.post('/Admin/ImageDelete', data,
+                function (data) {
+                    if (data == true)
+                        window.location.href = 'ImageView';
+                    else
+                        alert("Can't Delete. Contact Support Team.");
+                });
+            }
+        }
+
+        $('#BtnSearch').click(function () {
+            $("#Status").text("Loading Please Wait...");
+            $('#tbl').empty();
+            $.ajax({
+                type: "POST",
+                url: "/Admin/getSearchImage",
+                datatype: "Json",
+                data: { searchTxt: $('#TxtSearch').val(), searchClmn: $('#SelectColmn').val() },
+                success: function (data) {
+                    $('#tbl').append("<tr><th class='col'>ID</th><th class='col'>Image</th><th class='col'>Alt Desc</th><th class='col'>Group</th><th class='col'>Date</th><th class='col'>Year</th><th class='col'>Description</th><th class='col'>Action</th></tr>");
+                    $.each(data, function (index, value) {
+                        $('#tbl').append("<tr class='col-lg-12 col-md-12 col-sm-12'>" + "<td><label id='" + value.ID + "'>" + value.ID + "</label></td>" + "<td>" + "<a href='/Image/" + value.Image + "' target='_blank' ><img src=/Image/" + value.Image + " " + 'alt="' + value.Alt + '"' + 'style="width:100px; height:100px" class="img-thumbnail"' + " /></a></td>" + "<td><label>" + value.Alt + "</label></td><td><label>" + value.ImgGroup + "</label></td>" + "<td><label>" + value.Date + "</label></td><td><label>" + value.Year + "</label></td><td>" + "&nbsp;" + value.Description + "</td><td><img src='/images/edit.png' title='Edit' onclick='EditImage(" + value.ID + ")'/> <img src='/images/delete.png' title='Delete' onclick='DeleteImage(" + value.ID + ")' />  </td>" + "</tr>");
+                    });
+                    $("#Status").text("");
+                }
+            });
+        });
+
+    </script>
+}
+
+<div>
+    <table id="tbl" class="table table-responsive table-hover table-bordered text-center"></table>
+</div>

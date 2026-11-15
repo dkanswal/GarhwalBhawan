@@ -1,0 +1,51 @@
+﻿@model GarhwalBhawan.ViewModel.AdTblViewModel
+
+@{
+    ViewBag.Title = "AdDetail";
+}
+
+@foreach(var items in @Model.AdDescObj)
+{ 
+<div class="events-sec">
+    <div class="container">
+        <h3 class="tittle fadeInRight text-center">@items.AdTitle </h3>
+        <div class="event-grids">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 event-grid wow fadeInRight animated" data-wow-delay=".5s">
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 event-grid wow fadeInLeft animated text-center" style="margin:30px 0" data-wow-delay=".5s">
+                        <h4>
+                            @items.AdDesc
+                        </h4>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+}
+
+<div class="container">
+    @*<table class="table table-responsive table-bordered">*@
+
+    @foreach (var item in Model.AdImgObj)
+        {
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="~/Image/AdImg/@item.AdImg" alt="@item.AdID" class="img-responsive img-thumbnail" style="height:auto; width:auto">
+            </div>
+        </div>
+                @*<tr>
+                        <td class="text-center">
+                            <img src="~/Image/AdImg/@item.AdImg" alt="@item.AdID" class="img-responsive img-thumbnail">
+                        </td>
+                    </tr>*@
+                }
+    @*</table>*@
+</div>

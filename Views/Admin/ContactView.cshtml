@@ -1,0 +1,65 @@
+﻿@model List<GarhwalBhawan.Models.ContactTbl>
+
+@{
+    ViewBag.Title = "Contact Requests";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <style type="text/css">
+        .grid {
+            width: 100%;
+        }
+    </style>
+}
+
+<div class="container">
+
+    <h2>Contact Information List</h2>
+
+    <div class="container">
+        @{
+            WebGrid grid = new WebGrid(Model);
+            @grid.GetHtml(
+                  tableStyle: "table table-hover",
+         fillEmptyRows: false,
+         mode: WebGridPagerModes.All,
+         firstText: "<< First",
+         previousText: "< Prev",
+         nextText: "Next >",
+         lastText: "Last >>",
+         columns: new[] {
+         grid.Column("ID",header: "ID"),
+         grid.Column("Name",header: "Name"),
+         grid.Column("EMail",header: "EMail"),
+         grid.Column("Phone",header: "Phone"),
+         grid.Column("Message",header: "Message"),
+         grid.Column("Date",header: "Date"),
+         grid.Column("ID", header: "Action", canSort:false,
+
+         format: @<text>
+            @Html.Raw("<img src='/images/delete.png' title='Delete' onclick='DeleteContact(" + item.ID + ")' />")
+        </text>
+        )
+     })
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+
+        function DeleteContact(C_ID) {
+            if (confirm("Are You Sure Delete Selected Contact Record No.? " + C_ID)) {
+                var data = { 'CntctID': C_ID }
+                $.post('/Admin/ContactDelete', data,
+                function (data) {
+                    if (data == true)
+                        window.location.href = 'ContactView';
+                    else
+                        alert("Can't Delete. Contact Support Team.");
+                });
+            }
+        }
+    </script>
+}

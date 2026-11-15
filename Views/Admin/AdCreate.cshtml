@@ -1,0 +1,100 @@
+﻿@model GarhwalBhawan.Models.AdTbl
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            Ad Start Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            Ad End Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            Link Address
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Link)
+        </div>
+        
+        <div class="editor-label">
+            Amount
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <div class="editor-label">
+            Company Ad Logo/Image
+        </div>
+        <div>
+            <input id="Image" title="Upload an image" type="file" name="file" class="btn btn-info" />
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+
+        <p>
+            <input id="AdSave" type="button" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#AdSave').click(function () {
+
+            var formdata = new FormData($('form').get(0));
+
+            $.ajax({
+                url: '@Url.Action("AdCreate", "Admin")',
+                type: 'POST',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response != null && response.success) {
+                        alert(response.responseText);
+                    } else {
+                        alert(response.responseText);
+                    }
+                },
+                error: function (response) {
+                    alert("error!");  //
+                }
+            });
+
+        });
+    });
+</script>
+
+<div>
+    @Html.ActionLink("Close", "AdView")
+</div>

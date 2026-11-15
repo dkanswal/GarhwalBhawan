@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GarhwalBhawan.Models.SamacharTbl>
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+@{
+    ViewBag.Title = "Garhwal Bhawan News List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:50px">
+   
+    <h2>Garhwal Bhawan News</h2>
+
+    <div class="form-group">
+        <input id="TxtSearch" type="text" class="form-inline" style="border:black 1px solid" />
+        <input id="BtnSearch" type="button" value="Search" class="form-inline" />
+       
+    </div>
+
+    <span id="Status" class="label label-danger" style="font-size:20px"></span>
+
+</div>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(window).load(function () {
+                $("#Status").text("Loading Please Wait...");
+                $('#tbl').empty();
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/getNewsSearch",
+                    datatype: "Json",
+                    data: { searchTxt: $('#TxtSearch').val(), searchClmn: $('#SelectColmn').val() },
+                    success: function (data) {
+                        $('#tbl').append("<tr><th>ID</th><th>Image</th><th>Alt Desc</th><th>Heading</th><th>Description</th></tr>");
+                        $.each(data, function (index, value) {
+                            $('#tbl').append("<tr class='col-lg-12 col-md-12 col-sm-12'>" + "<td><label id='" + value.ID + "'>" + value.ID + "</label></td>" + "<td>" + "<a href='/Image/News/" + value.Image + "' target='_blank' ><img src=/Image/News/" + value.Image + " " + 'alt="' + value.Alt + '"' + 'style="width:100px; height:100px" class="img-thumbnail"' + " /></a></td>" + "<td><label>" + value.Alt + "</label></td><td><label>" + value.Heading + "</label></td>" + "<td><label>" + value.Description + "</label></td>" + "</tr>");
+                        });
+                        $("#Status").text("");
+                    }
+                });
+            });
+        });
+
+       
+
+        $('#BtnSearch').click(function () {
+            $("#Status").text("Loading Please Wait...");
+            $('#tbl').empty();
+            $.ajax({
+                type: "POST",
+                url: "/Home/getNewsSearch",
+                datatype: "Json",
+                data: { searchTxt: $('#TxtSearch').val()},
+                success: function (data) {
+                    $('#tbl').append("<tr><th>ID</th><th>Image</th><th>Alt Desc</th><th>Heading</th><th>Description</th></tr>");
+                    $.each(data, function (index, value) {
+                        $('#tbl').append("<tr class='col-lg-12 col-md-12 col-sm-12'>" + "<td><label id='" + value.ID + "'>" + value.ID + "</label></td>" + "<td>" + "<a href='/Image/" + value.Image + "' target='_blank' ><img src=/Image/" + value.Image + " " + 'alt="' + value.Alt + '"' + 'style="width:100px; height:100px" class="img-thumbnail"' + " /></a></td>" + "<td><label>" + value.Alt + "</label></td><td><label>" + value.Heading + "</label></td>" + "<td><label>" + value.Description + "</label></td>" + "</tr>");
+                    });
+                    $("#Status").text("");
+                }
+            });
+        });
+
+    </script>
+}
+
+<div>
+    <table id="tbl" class="table table-responsive table-hover table-bordered text-center"></table>
+</div>

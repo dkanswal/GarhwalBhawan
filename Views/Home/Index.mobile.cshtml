@@ -1,0 +1,620 @@
+﻿@model GarhwalBhawan.Models.HomeTable
+@{
+    ViewBag.Title = "मुख्य पृष्ठ";
+}
+
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/unslider-master/src/js/unslider.js"></script>
+<link href="~/unslider-master/dist/css/unslider.css" rel="stylesheet" />
+<link href="~/unslider-master/dist/css/unslider-dots.css" rel="stylesheet" />
+<script src="~/adsliderjs/jssor.slider-22.0.6.min.js"></script>
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $('.fading-slider').unslider({
+            animation: 'fade',
+            autoplay: true,
+            arrows: false
+        });
+
+        $('.quality a').each(function () {
+            $(this).css('border', 'none');
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#itembanner img').each(function () {
+            $(this).css('width', '100%');
+        });
+        $('.captn').each(function () {
+            $(this).css('background-color', '#17c224');
+        });
+    });
+
+    //News Div Load Via Ajax Starts
+    $(document).ready(function () {
+        $('#NewsPlaceHolder').load("/Partial/Index");
+    });
+    //News Div Load Via Ajax Ends
+
+    //Matri Image Increase on Hover Starts
+    $(document).ready(function () {
+        var $image = $('.contleft #subhshadi'), //Or some other selector
+        imgWidth = $image.width(),
+        imgHeight = $image.height();
+        $('#subhshadi').hover(function () {
+            //The mouseover 
+            //$(this).css('height', '100%');
+            //$(this).css('width', '100%');
+            $(this).width(imgWidth * 2);
+            $(this).height(imgHeight * 2);
+        }, function () {
+            $(this).width(imgWidth);
+            $(this).height(imgHeight);
+        });
+    });
+    //Matri Image Increase on Hover Ends
+
+</script>
+
+<script type="text/javascript">
+    jssor_1_slider_init = function () {
+
+        var jssor_1_options = {
+            $AutoPlay: true,
+            $AutoPlaySteps: 4,
+            $SlideDuration: 160,
+            $SlideWidth: 200,
+            $SlideSpacing: 3,
+            $Cols: 4,
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $Steps: 4
+            },
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,
+                $SpacingX: 1,
+                $SpacingY: 1
+            }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+        /*responsive code begin*/
+        /*you can remove responsive code if you don't want the slider scales while window resizing*/
+        function ScaleSlider() {
+            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 809);
+                jssor_1_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+        ScaleSlider();
+        $Jssor$.$AddEvent(window, "load", ScaleSlider);
+        $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+        $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+        /*responsive code end*/
+    };
+</script>
+<style>
+    /* jssor slider bullet navigator skin 03 css */
+    /*
+        .jssorb03 div           (normal)
+        .jssorb03 div:hover     (normal mouseover)
+        .jssorb03 .av           (active)
+        .jssorb03 .av:hover     (active mouseover)
+        .jssorb03 .dn           (mousedown)
+        */
+    .jssorb03 {
+        position: absolute;
+    }
+
+        .jssorb03 div, .jssorb03 div:hover, .jssorb03 .av {
+            position: absolute;
+            /* size of bullet elment */
+            width: 21px;
+            height: 21px;
+            text-align: center;
+            line-height: 21px;
+            color: #000;
+            border: 2px solid black;
+            font-size: 12px;
+            background: url('Image/b03.png') no-repeat;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .jssorb03 div {
+            background-position: -5px -4px;
+        }
+
+            .jssorb03 div:hover, .jssorb03 .av:hover {
+                background-position: -35px -4px;
+            }
+
+        .jssorb03 .av {
+            background-position: -65px -4px;
+        }
+
+        .jssorb03 .dn, .jssorb03 .dn:hover {
+            background-position: -95px -4px;
+        }
+
+    /* jssor slider arrow navigator skin 03 css */
+    /*
+        .jssora03l                  (normal)
+        .jssora03r                  (normal)
+        .jssora03l:hover            (normal mouseover)
+        .jssora03r:hover            (normal mouseover)
+        .jssora03l.jssora03ldn      (mousedown)
+        .jssora03r.jssora03rdn      (mousedown)
+        .jssora03l.jssora03ldn      (disabled)
+        .jssora03r.jssora03rdn      (disabled)
+        */
+    .jssora03l, .jssora03r {
+        display: block;
+        position: absolute;
+        /* size of arrow element */
+        width: 55px;
+        height: 55px;
+        cursor: pointer;
+        background: url('Image/a03.png') no-repeat;
+        overflow: hidden;
+    }
+
+    .jssora03l {
+        background-position: -3px -33px;
+    }
+
+    .jssora03r {
+        background-position: -63px -33px;
+    }
+
+    .jssora03l:hover {
+        background-position: -123px -33px;
+    }
+
+    .jssora03r:hover {
+        background-position: -183px -33px;
+    }
+
+    .jssora03l.jssora03ldn {
+        background-position: -243px -33px;
+    }
+
+    .jssora03r.jssora03rdn {
+        background-position: -303px -33px;
+    }
+
+    .jssora03l.jssora03lds {
+        background-position: -3px -33px;
+        opacity: .3;
+        pointer-events: none;
+    }
+
+    .jssora03r.jssora03rds {
+        background-position: -63px -33px;
+        opacity: .3;
+        pointer-events: none;
+    }
+</style>
+
+<div class="clearfix"></div>
+
+<!--Fixed Box-->
+<div class="contright">
+        <a href="~/Home/DonateUs">
+            <img src="~/images/donate.jpg" alt="donate" />
+        </a>
+        <div class="clearfix"></div>
+    </div>
+
+<div class="contleft">
+    <a href="http://subhshadi.com/" target="_blank">
+        <img id="subhshadi" src="~/images/wedding.png" alt="subhshadi" style="height:80px; width:80px" />
+    </a>
+        <div class="clearfix"></div>
+    </div>
+<!--Fixed Box-->
+
+<div class="container">
+    <div id="OpenDilog"></div>
+    <div class="quality">
+        <div class="container">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    @{
+                        var itemno = 1;
+                    }
+                    @foreach (var item in Model.BannerObj)
+                    {
+                        <li data-target="#carousel-example-generic" data-slide-to="@itemno"></li>
+                        itemno++;
+                    }
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="~/Image/garhwalbhawanbanner.jpg" class="img-responsive img-thumbnail" style="height:200px; width:100%">
+                        <div class="captionsl">
+                            <div class="captionsl-inner">
+                                <div class="captionsl-content">
+                                    <span class="header titlebanner">
+                                        <b> Garhwal Bhawan</b>
+                                    </span>
+                                    @*<p>
+                                        <b>Garhwal Bhawan, New Delhi </b>
+                                    </p>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach (var item in Model.BannerObj)
+                    {
+                        <div id="itembanner" class="item">
+                            <img src="~/Image/@item.Image" alt="@item.Alt" class="img-responsive img-thumbnail" style="height:200px; width:100%" />
+                            <div class="captionsl">
+                                <div class="captionsl-inner">
+                                    <div class="captionsl-content">
+                                        <span class="header titlebanner">
+                                            <b> @item.Heading</b>
+                                        </span>
+                                        @*<p>
+                                            <b>@item.Description</b>
+                                        </p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="container">
+            <h3> </h3>
+            <div class="col-md-4 bot-left wow fadeInLeft animated" data-wow-delay=".5s">
+                <a href="~/Home/Uplabdhiyan">
+                    <figure>
+                        <img class="img-responsive" src="~/images/book2.jpg" alt="Garhwal Bhawan">
+                        <figcaption>
+                            <div class="fig-bor">
+                                <h3 style="color:aquamarine">उपलब्धियाँ व भविष्य की योजनाए</h3>
+                                <p>
+
+                                </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-4 bot-left wow fadeInDown animated" data-wow-delay=".5s">
+                <a href="~/images.jpg" target="_blank" class="text-center">
+                    <figure>
+                        <img class="img-responsive" src="~/images/garhwalMem.jpg" alt="Garhwal Bhawan">
+                        <figcaption>
+                            <div class="fig-bor">
+                                <h3 style="color:aquamarine">वर्त्तमान कार्यकारिणी</h3>
+                                @*<p style="font-size:large">
+                                        1 विद्यार्थियों का सम्मान <br />
+                                        2 उत्तराखण्ड प्राक्र्तिक आपदा <br />
+                                        3 सामाजिक सहायता
+                                    </p>*@
+                            </div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-4 qua-left wow fadeInRight animated" data-wow-delay=".5s">
+                <a href="~/Home/house-of-the-constitution">
+                    <figure>
+                        <img class="img-responsive" src="~/images/book2.jpg" alt="Garhwal Bhawan">
+                        <figcaption>
+                            <div class="fig-bor">
+                                <p>
+                                    <br /><br /><br /><br />
+                                </p>
+                                <h3 style="color:aquamarine">सभा का संविधान</h3>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- //banner-bottom -->
+    @*<div class="items">
+        <div class="container">
+            <div class="col-md-6 item-left wow fadeInRight animated" data-wow-delay=".5s">
+                <h4>महत्वपूर्ण लिंक</h4>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim eaque ipsa quae ab illo inventore.
+                </p>
+            </div>
+            <div class="col-md-6 item-right wow fadeInLeft animated" data-wow-delay=".5s">
+
+                @foreach (var item in @Model.ImpLinkObj)
+                {
+                    <div class="col-sm-6 item-left-img text-center">
+                        <h4>@item.Heading</h4>
+                        <p style="text-align:justify">
+                            @item.Description
+                        </p>*@
+    @*<a href="about.html">Readmore</a>*@
+    @*</div>
+                    }
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>*@
+
+    <!-- quality -->
+    <div class="quality">
+        <div class="container">
+            <h3>उत्तराखंड संबन्धित</h3>
+            <div class="bot-para text-center" style="font-size:20px; color:#e22b2b;">
+                यहाँ पर आप उत्तराखण्ड के महान व्यक्तियों की सूची तथा राज्य की संछिप्त जानकारियाँ प्राप्त कर सकते हैं |
+            </div>
+            <div class="col-md-6 qua-left wow fadeInLeft animated" data-wow-delay=".5s">
+                <a href="#">
+                    <figure>
+                        <img class="img-responsive" src="~/images/bg.jpg" alt="Uttrakhand">
+                        <figcaption>
+                            <div class="fig-bor" style="margin-top:-20px">
+                                <h3>हमारा उत्तराखण्ड एक परिचय</h3>
+                                @Html.ActionLink("इतिहास", "GarhwalHistory", "home")
+                                @Html.ActionLink("संस्कृति", "Sanskriti", "home")
+                                @Html.ActionLink("जिले", "DownloadFile", "home", new { @id = 4 }, new { target = "_blank" })
+                                @Html.ActionLink("मुख्यमंत्रि व राज्यपाल", "DownloadFile", "home", new { @id = 10 }, new { target = "_blank" })
+                                @Html.ActionLink("पकवान", "DownloadFile", "home", new { @id = 3 }, new { target = "_blank" })
+                               
+                                @Html.ActionLink("न्यायाधीश", "DownloadFile", "home", new { @id = 2 }, new { target = "_blank" })
+                                @Html.ActionLink("फल व सब्जियाँ", "FruitsAndVeg", "home")
+                                @Html.ActionLink("सांसद,वि॰ स॰ सदस्य", "DownloadFile", "home", new { @id = 11 }, new { target = "_blank" })
+                            </div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-6 qua-left wow fadeInRight animated" data-wow-delay=".5s">
+                <a href="~/Document/UKpersonalities.pdf" target="_blank">
+                    <figure>
+                        <img class="img-responsive" src="~/images/vibhutiyan.jpg" alt="उत्तराखण्ड की बिभूतियाँ" style="height:340px" />
+                        <figcaption>
+                            <div class="fig-bor">
+                                <h3>उत्तराखण्ड की बिभूतियाँ</h3>
+                                <p>
+
+                                </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //quality -->
+    <!-- experts -->
+    <div class="experts">
+        <div class="container">
+            <h3>सन्देश</h3>
+            <p style="font-size:20px; color:darkcyan">
+                गढ़वाल हितेषिणी सभा के अध्यक्ष,उपाध्यक्ष,महासचिव,सचिव तथा कोशाध्यक्ष के संदेश |
+            </p>
+
+
+            @*@foreach (var item in @Model.TeamObj)
+                {
+                    <div class="col-md-4 bottom-grid wow fadeInRight animated" data-wow-delay=".5s">
+                        <div class="btm-right" style="height:100%; width:250px">
+                            <img src="~/Image/Cabinet/@item.Image" alt="@item.Alt" class="img-responsive img-thumbnail" />
+
+                            <div class="captn">
+                                <h4 style="font-size:15px">@item.Name </h4>
+                                <div class="container" style="text-align:justify; height:60px; display:block; overflow:hidden;">
+                                    @item.Description
+                                </div>
+                                <div>
+                                    <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }*@
+
+
+            <div class="row">
+                    @foreach (var item in @Model.TeamObj)
+                    {
+                        <div class="col-sm-6 col-md-2">
+                            <div class="thumbnail">
+                                <img src="~/Image/Cabinet/@item.Image" alt="@item.Alt" />
+                                <div class="caption">
+                                    <h4 style="color:green;">@item.Name </h4>
+                                    <div style="text-align:justify; height:40px; display:block; overflow:hidden;">
+                                        @item.Description
+                                    </div>
+                                    <p>
+                                        <button id="BtnMore" class="btn btn-sm btn-default" onclick="SeeMreFunc(@item.ID)">See More</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div>
+
+
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //experts -->
+
+
+
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden; visibility: hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('Image/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
+
+            @foreach (var item in @Model.AdObj)
+            {
+                <div class="col-md-3 news-grid mask wow  animated" data-wow-delay=".5s" style="margin:4px">
+                    <div class="col-xs-12 col-md-12">
+                        @if (item.Link == "")
+                        {
+
+                            @*<a href="#" onclick="window.open('/Image/AdImg/@item.Image', '_blank', 'toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width=400, height=480'); return (false)"><img src="~/Image/AdImg/@item.Image" alt="@item.Name" class="img-responsive zoom-img text-center" style="height:100%; width:100%" /></a>*@
+
+                            <a href="~/Home/AdImageDetail/@item.ID" class="thumbnail" target="_blank">
+                                <img src="~/Image/AdImg/@item.Image" alt="@item.Name" class="img-responsive zoom-img" style="height:100%; width:100%">
+                            </a>
+                        }
+                        else if (item.Link == "AdPage")
+                        {
+                            <a href="~/Home/AdDetail/@item.ID" class="thumbnail" target="_blank">
+                                <img src="~/Image/AdImg/@item.Image" alt="@item.Name" class="img-responsive zoom-img" style="height:100%; width:100%">
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="http://@item.Link" class="thumbnail" target="_blank">
+                                <img src="~/Image/AdImg/@item.Image" alt="@item.Name" class="img-responsive zoom-img" style="height:100%; width:100%">
+                            </a>
+                        }
+
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb03" style="bottom:10px;right:10px;">
+            <!-- bullet navigator item prototype -->
+            <div data-u="prototype" style="width:21px;height:21px;">
+                <div data-u="numbertemplate"></div>
+            </div>
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px; background-color:rgba(0, 0, 0, 0.4)" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px; background-color:rgba(0, 0, 0, 0.4)" data-autocenter="2"></span>
+    </div>
+    <script type="text/javascript">jssor_1_slider_init();</script>
+    <div class="clearfix" style="margin-top:40px"></div>
+    <b style="color:red">
+        Legal Information :-
+        All brand and product names and associated logos contained within this website belong to their respective owners. The offers shown here are offers from the respective brands. Garhwal Hiteshini Sabha  accepts no responsibility for any offers from these brands or for the content on their web pages.
+    </b>
+
+
+    <!-- //experts -->
+    <!-- services -->
+    <!--
+    <div class="clearfix" style="margin-top:40px"></div>
+
+    <div class="services">
+        <div class="container">
+            @*<h3>सांस्कृतिक कार्यक्रम</h3>*@
+            <div class="col-md-3 services-gd text-center wow fadeInLeft animated" data-wow-delay=".5s">
+                <div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+                    <a href="#" class="hi-icon"><img src="~/images/living.png" alt=" " /></a>
+                </div>
+                <h4>गढ़वाल भवन</h4>
+            </div>
+            <div class="col-md-3 services-gd text-center wow fadeInUp animated" data-wow-delay=".5s">
+                <div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+                    <a href="#" class="hi-icon"><img src="~/images/bed.png" alt=" " /></a>
+                </div>
+                <h4>सामाजिक पहल</h4>
+            </div>
+            <div class="col-md-3 services-gd text-center wow fadeInDown animated" data-wow-delay=".5s">
+                <div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+                    <a href="#" class="hi-icon"><img src="~/images/beach.png" alt=" " /></a>
+                </div>
+                <h4>सांस्कृतिक कार्यक्रम</h4>
+            </div>
+            <div class="col-md-3 services-gd text-center wow fadeInRight animated" data-wow-delay=".5s">
+                <div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+                    <a href="#" class="hi-icon"><img src="~/images/rest.png" alt=" " /></a>
+                </div>
+                <h4>सामाजिक सहयोग</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    -->
+    <!-- //services -->
+    <!-- news -->
+
+    <div class="news">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <div class="news-text text-center">
+                <h3>सभा के समाचार</h3>
+                <p id="NewsPlaceHolder" style="width:100%;"></p>
+            </div>
+            <p class="btn-group btn-group-lg">
+                <a href="~/Home/getNewsSearch" class="btn btn-info heading" role="button">
+                    पढ़े अन्य खबरे
+                </a>
+                </p>
+        </div>
+    </div>
+
+    <!-- //news -->
+</div>
+
+<script type="text/javascript">
+    function SeeMreFunc(I_ID) {
+        var ph = $("#OpenDilog");
+        ph.load("/Home/Sandesh?id=" + I_ID, function () {
+            ph.dialog({
+                modal: true,
+                width: 500,
+                height: 600,
+                title: "सन्देश",
+                resizable: false
+            });
+        });
+    }
+</script>
